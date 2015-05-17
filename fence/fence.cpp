@@ -118,6 +118,19 @@ int solve2(int left, int right){
 	return ret;
 }
 
+int bruteForce(vector<int>& fences){
+	int ret = 0;
+	int N = fences.size();
+	for (int left = 0; left < N; ++left){
+		int minHeight = fences[left];
+		for (int right = left; right < N; ++right){
+			minHeight = min(minHeight, fences[right]);
+			ret = max(ret, (right - left + 1)*minHeight);
+		}
+	}
+	return ret;
+}
+
 int main(){
 	int cases; cin >> cases;
 	while (cases--){
